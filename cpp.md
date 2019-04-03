@@ -3,7 +3,7 @@
 ## #include
 - include문은 '#include Directive"라고 한다.
 - 이후에 올 파일을 포함하라는 의미
-- # = 전처리 명령
+- '#' = 전처리 명령
 ~~~
 #include <iostream> // input output stream
 ~~~

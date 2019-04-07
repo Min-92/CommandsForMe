@@ -39,7 +39,7 @@ https://sourceforge.net/projects/mingw/files/latest/download
 
 - settings.json 진입
 
-![vs9](.img/vs9.png)
+![vs9](./img/vs9.png)
 
 - 코드편집
 - cpp파일별로 개별로 exe파일 생성하고 싶으면 주석처리 부분을 사용
@@ -67,6 +67,7 @@ https://sourceforge.net/projects/mingw/files/latest/download
 - *컴파일 설정 완료*
 
 4. 디버깅 환경설정
+
 ![vs11](./img/vs11.png)
 
 - Ctrl + Shift + D 디버깅 창 열기

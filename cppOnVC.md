@@ -4,7 +4,7 @@
 https://sourceforge.net/projects/mingw/files/latest/download  
 
 
-![vs1](./img/vs1.png)     
+![vs1](./img/vs1.PNG)     
 ![vs2](./img/vs2.png)     
 
 - 패키지 선택 후 Apply Changes

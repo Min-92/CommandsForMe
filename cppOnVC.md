@@ -4,16 +4,16 @@
 https://sourceforge.net/projects/mingw/files/latest/download  
 
 
-![vs1](.img/vs1.png)     
-![vs2](.img/vs2.png)     
+![vs1](./img/vs1.png)     
+![vs2](./img/vs2.png)     
 
 - 패키지 선택 후 Apply Changes
 
-![vs3](.img/vs3.png)     
+![vs3](./img/vs3.png)     
 
 - 환경변수에 C:\MinGW\bin 추가
 
-![vs4](.img/vs4.png)     
+![vs4](./img/vs4.png)     
 
 
 - gcc --version
@@ -23,19 +23,19 @@ https://sourceforge.net/projects/mingw/files/latest/download
 2. 확장프로그램 설치
     - Code Runer
     - C/C++
-![vs5](.img/vs5.png)     
+![vs5](./img/vs5.png)     
 
 3. 설졍 편집
 
-![vs6](.img/vs6.png)     
+![vs6](./img/vs6.png)     
 
 - 파일-기본설정-설정 으로 진입
 
-![vs7](.img/vs7.png)
+![vs7](./img/vs7.png)
 
 - Code-runner:Run In Terminal     
 
-![vs8](.img/vs8.png)
+![vs8](./img/vs8.png)
 
 - settings.json 진입
 
@@ -60,20 +60,20 @@ https://sourceforge.net/projects/mingw/files/latest/download
 }
 ~~~
 
-![vs10](.img/vs10.png)
+![vs10](./img/vs10.png)
 
 - Ctrl + Alt + N 으로 실행
 - 터미널 창을이용해 입력 가능
 - *컴파일 설정 완료*
 
 4. 디버깅 환경설정
-![vs11](.img/vs11.png)
+![vs11](./img/vs11.png)
 
 - Ctrl + Shift + D 디버깅 창 열기
 - 톱니바퀴 모양 클릭
 - C++ (GDB/LLDB) 선택
 
-![vs12](.img/vs12.png)
+![vs12](./img/vs12.png)
 
 - launch.json 파일 생성 및 코드 수정
 - "program": "${fileDirname}/a.exe", // exe 파일 경로 설정 개별 exe설정으로 한 경우는 주석처리한 코드사용
@@ -115,7 +115,7 @@ https://sourceforge.net/projects/mingw/files/latest/download
 }
 ~~~
 
-![vs13](.img/vs13.png)
+![vs13](./img/vs13.png)
 
 - F5 로 디버깅 구동 확인
 - *구동 후 콘솔창이 바로 종료되는 현상 해결 필요*

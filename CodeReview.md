@@ -21,7 +21,7 @@ git push origin 'branchName2'
 - pull request는 저장소 브랜치와 앞단계에서 생성한 브랜치 이름을 기준으로 한다.
 - request를 통해 피드백을 받으면 코드를 수정한 후 같은 브랜치에 add,commit,push 작업을 반복한다.
 ## 8. 리뷰어는 피드백을 마무리하고 저장소에 merge한다.(request 승인)
-## 9. merge를 완료했다는 통보를 받음녀 브랜치 변경 및 작업브랜치를 삭제한다.
+## 9. merge를 완료했다는 통보를 받으면 브랜치 변경 및 작업브랜치를 삭제한다.
 ~~~
 git checkout 'branchName'
 git branch -D 'branchName2' //브랜치 삭제

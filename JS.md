@@ -170,6 +170,61 @@ function getName(name) {
 const getName = (name) => "Kim " + name;
 ~~~
 
+## rest parameter
+~~~
+// Rest 파라미터 이전에, "arguments" 는 다음을 사용해 일반적인 배열로 변환될 수 있음
+
+function f(a, b) {
+
+  var normalArray = Array.prototype.slice.call(arguments);
+  // -- 또는 --
+  var normalArray = [].slice.call(arguments);
+  // -- 또는 --
+  var normalArray = Array.from(arguments);
+
+  var first = normalArray.shift(); // OK, 첫 번째 인수를 반환
+  var first = arguments.shift(); // ERROR (arguments 가 일반적인 배열이 아님)
+
+}
+
+// 이제 rest 파라미터를 사용해 쉽게 일반적인 배열에 접근할 수 있음
+
+function f(...args) {
+  var normalArray = args;
+  var first = normalArray.shift(); // OK, 첫 번째 인수를 반환
+}
+~~~
+
+## 재귀
+- 함수가 함수 안에서 자신을 다시 호출하는 것
+~~~
+//팩토리얼 출력하는 재귀함수
+function factorial(a){
+    if(a === 1) {
+        return a;
+    }else{
+    return a*factorial(a-1);
+    }
+        
+}
+
+console.log(factorial(10));
+
+//피보나치 수열
+function fibonacci(n){
+    if(n===0){
+        return n;
+    }else if(n===1){
+        return n;
+    }else{
+        return fibonacci(n-1)+fibonacci(n-2);
+    }
+
+}
+console.log(fibonacci(11));
+
+~~~
+
 ## 미션
 1. 반지름을 입력받아 원의 넓이를 계산하는 함수를 만든다
 2. 필요한 인자를 입력받아 사각형의 넓이를 계산하는 함수를 만든다

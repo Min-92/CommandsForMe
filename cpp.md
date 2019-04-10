@@ -54,4 +54,51 @@ max(1,2) // 2
 
 
 
+## 함수
+
+##### 선언
+
+~~~
+int functionName(int n, int k){
+    
+    return 0;
+}
+~~~
+
+
+
+## 벡터
+
+##### 선언
+
+~~~
+vector<int> name();
+vector<int> name(n);
+vector<int> name(n,x);
+vector<int> name(b,e); //반복자 구간 b,e 로 초기화된 원소 가짐
+
+
+~~~
+
+###### 크기
+
+~~~
+v.size();
+~~~
+
+###### 반복자
+
+~~~
+b = v.begin();
+e = v.begin();
+~~~
+
+
+
+## 형변환
+
+~~~
+string str = to_string(n); // int to string
+int number = atoi()
+~~~
 

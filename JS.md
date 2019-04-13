@@ -5,6 +5,11 @@
 - 2019년 현재는 ES2015(ES6) 기준
 
 ## 변수
+
+- Scope(유효범위) : 변수의 수명을 의미
+- 지역변수(local)
+- 전역변수(global) 
+
 1. var
     1. 함수레벨 스코프(Function-level scope)  
 
@@ -120,7 +125,10 @@ for(var i = 0; i < N; i++){
 }
 ~~~
 
+
+
 ## 반복문 추가
+
 1. for in
 ~~~
 for(var i in object1){
@@ -136,7 +144,7 @@ for (var value of object){
 
 
 
-## 배열
+## 배열(Array) "[]"
 
 ------
 
@@ -153,9 +161,44 @@ var arr = [1,2,3];
 
 Array.length
 
+### 배열 메소드
 
+#### 추가
 
-### forEach
+~~~
+array.push(); // 배열 마지막에 원소 추가
+array = array.concat(['a','b']); // 복수 원소 추가
+array.unshift(0); // 첫번째 원소에 추가하고 기존값들 인덱스 1씩 추가
+array.splice(n,a,data); // 배열의 n번째부터 a갯수 만큼 삭제하고 data를 추가
+~~~
+
+#### 제거
+
+~~~
+array.shift(); // 첫번재 원소 제거
+array.pop(); // 마지막 원소 제거
+~~~
+
+#### 정렬
+
+~~~
+array.sort(); //숫자의 경우 정상적으로 이루어지진 않는다
+array.reverse(); //역순정렬
+
+//숫자 정렬법
+function sortNumber(a,b){
+    return a-b;
+}
+array.sort(sortNumber);
+
+//역순정렬
+function sortNumber(a,b){
+    return b-a;
+}
+array.sort(sortNumber);
+~~~
+
+#### forEach
 
 forEach() 메소드는 배열의 인자값만큼 fucntion이 반복된다.  
 3개의 매개변수 를 사용할수 있다.
@@ -166,13 +209,98 @@ forEach() 메소드는 배열의 인자값만큼 fucntion이 반복된다.
 
 ~~~
 var sum = 0;  
-var obj = [5,13,8];  
+var arr = [5,13,8];  
 
-obj.forEach(function(item,index,array){  
+arr.forEach(function(item,index,array){  
   sum +=item;  
 });  
 
 console.log(sum);
+~~~
+
+
+
+## 객체(Object) ''{}''
+
+------
+
+-  배열과 유사한 역할
+- 식별자로 key 를 사용
+- key 와 value 로 이루어짐
+
+### 선언
+
+- 객체 key 값에는 ""가 필요없다
+
+- 하지만 아래의 경우엔 오류발생
+
+- ~~~
+  var grades = {
+      list : {name : '이민재', nickname : '왕민'},
+       show : function(){
+          console.log("Hello");
+      }
+  }
+  console.log(grades[list]);// grades['list'] 가 되어야함 
+  ~~~
+
+  
+
+```
+var grade1 = {name : '이민재' , nickname : '왕민' };
+
+var grade2 = ();
+grade2['name'] = '이민재';
+grade2['nickname'] = '왕민';
+
+var grade3 = new Object();
+grade2['name'] = '이민재';
+grade2['nickname'] = '왕민';
+```
+
+### 속성에 접근
+
+~~~
+grade1['name']
+grade1['na'+'me']
+grade1.name
+~~~
+
+###### 데이터 추가
+
+```
+let friend = {key : 'value'};
+friend.age = 20;
+console.log(friend); //{ key: 'value', age: 20 }
+```
+
+
+
+### 탐색(반복문)
+
+~~~
+for(key in grade1){
+	console.log(`key : ${key}, value : ${grade1[key]});
+}
+~~~
+
+
+
+### 객체에 담길 수 있는것
+
+- 이를 이용해서 객체를 그룹화 가능
+- -> 객체지향 프로그래밍
+
+~~~
+var grades = {
+    'list' : {name : '이민재', nickname : '왕민'},
+    'show' : function(){
+        console.log("Hello");
+    }
+}
+console.log(grades['list']);
+console.log(grades['list']['name']);
+grades['show']();
 ~~~
 
 
@@ -197,7 +325,66 @@ console.log(dec.toString(16)); //7b
 
 ## 함수
 
-### 함수 선언
+---
+
+- javaScript 에서는 함수도 객체다 = 일종의 값이다
+
+- First-class citizen(object) : 변수,매개변수, 리턴값으로 사용 될 수 있는 데이터
+
+- 함수는 값이기 때문에 다른 함수의 인자로 전달될 수도 있다
+
+- 객체에 저장된 함수를 메쏘드라 부른다
+
+  ~~~
+  function cal (func, num){
+      return func(num);
+  }
+  function increase(num){
+      return num+1;
+  }
+  console.log(cal(increase,1));
+  ~~~
+
+- 함수는 함수의 리턴값으로 사용 할 수도 있다.
+
+  ~~~
+  function cal(mode){
+      var funcs = {
+          'plus' : function(left,right){return left + right}
+          'minus' : function(left,right){return left - right}
+          
+      }
+      return funcs[mode];
+  }
+  
+  console.log(cal('plus')(2,1)); // 3
+  ~~~
+
+- 배열의 값으로도 사용할 수 있다
+
+  ~~~
+  var process = [
+      function(input) {return input + 10;},
+      function(input) {return input*input;},
+      function(input) {return input/2;}
+  ];
+  
+  var input = 1;
+  for(let i = 0; i < process.length; i++){
+      input = process[i](input);
+  	console.log(input);
+  }
+  // 11
+  // 121
+  // 60.5
+  ~~~
+
+
+
+### 함수 선언식
+
+- 호이스팅에 영향
+
 ~~~
 function areaC(r) {
     let area = 0;
@@ -212,6 +399,11 @@ function areaC(r) {
 ~~~
 
 ### 함수 표현식
+
+- 호이스팅에 영향을 받지 않음
+- 클로져로 사용
+- 콜백으로 사용
+
 ~~~
 var areaC = function() {
     let area = 0;
@@ -224,15 +416,90 @@ var areaC = function() {
     return area.toFixed(2);
 }
 ~~~
+
+
 ### arrow function
-~~~
+
+```
 function getName(name) {
    return "Kim " + name ;
 }
 
 //위 함수는 아래 arrow함수와 같다.
 const getName = (name) => "Kim " + name;
-~~~
+```
+
+
+
+### 콜백
+
+- 어떠한 함수가 수신하는 인자가 함수인 경우
+
+  ~~~
+  var numbers = [20,10,9,8,7,6,5,4,3,2,1];
+  function sortNumber(a,b){
+      return a-b;
+  }
+  console.log(numbers.sort(sortNumber));
+  
+  // sortNumber : 콜백함수
+  
+  ~~~
+
+  
+
+
+
+### 클로저(Closure)
+
+- 내부함수가 외부함수의 맥락에 접근 할 수 있는것을 가르킨다
+
+  ~~~
+  function outter(){
+  	var title = 'coding everybody';
+      function inner() {
+          console.log(title);
+      }
+      inner();
+  }
+  outter(); // 내부함수 inner 가 외부함수 outter 에 있는 지역변수 title 에 접근
+  ~~~
+
+- 클로저는 독립적인 변수를 가리키는 함수이다. 또는 클로저 안에 정의된 함수는 만들어진 환경을 기억한다
+
+  ~~~
+  function outter(){
+      var title = "coding everybody";
+      return function(){
+          console.log(title);
+      }
+  }
+  inner = outter();
+  inner(); // "coding everbody"
+  ~~~
+
+- private variable : 프로그램을 아무나 수정하지 못하도록
+
+  ~~~
+   function factory_movie(title){
+      return{
+          get_title : function(){
+              return title;
+          },
+          set_title : function(_title){
+              title = _title;
+          }
+      }
+  }
+  ghost = factory_movie('Ghost in the shell');
+  matrix = factory_movie('Matrix');
+  console.log(ghost.get_title()); //'Ghost in the shell'
+  console.log(matrix.get_title()); //'Matrix'
+  
+  
+  ghost.set_title('ghost');
+  console.log(ghost.get_title()); // 'ghost'
+  ~~~
 
 ## rest parameter
 ~~~
@@ -290,7 +557,43 @@ console.log(fibonacci(11));
 ~~~
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Reference
+
+- [opentutorials](https://opentutorials.org/course/743/6508)
+
 - [poiemaweb](https://poiemaweb.com/es6-block-scope)
 - [MDN web docs](https://developer.mozilla.org/ko/)
 - [nextstep](https://nextstep.camp/courses)
